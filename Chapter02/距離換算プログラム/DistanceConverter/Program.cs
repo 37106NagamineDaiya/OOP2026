@@ -30,17 +30,15 @@ namespace DistanceConverter
         {
             for (int feet = start; feet <= stop; feet++)
             {
-                FeetConverter converter = new FeetConverter();
-                double meter = converter.ToMeter(feet);
+                double meter = FeetConverter.ToMeter(feet);
                 Console.WriteLine($"{feet}ft = {meter:0.000}m");
             }
         }
         static void PrintMeterToFeetList(int start, int stop)
         {
             for (int meter = start; meter <= stop; meter++)
-            {
-                FeetConverter converter = new FeetConverter();
-                double feet = converter.FromMeter(meter);
+            {              
+                double feet = FeetConverter.FromMeter(meter);
                 Console.WriteLine($"{meter}m = {feet:0.000}ft");
             }
         }

@@ -14,7 +14,7 @@ namespace Exercise01 {
 
         private static void PrintSongs(Song[] songs) {
             foreach (Song song in songs) {
-                Console.WriteLine($"{song.Title},{song.ArtistName} {song.Length/60}:{(song.Length%60):D2}");
+                Console.WriteLine($"{song.Title},{song.ArtistName} {song.Length/60}:{(song.Length%60):D2}"); 
                 
             }
         }

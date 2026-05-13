@@ -16,7 +16,7 @@ namespace Exercise01 {
                 Console.Write("演奏時間(秒)：");
                 int Length = int.Parse(Console.ReadLine()!);
                 songs.Add(new Song(Title!, ArtistName!, Length));
-
+                
             }
             PrintSongs(songs);
         }

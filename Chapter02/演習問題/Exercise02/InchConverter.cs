@@ -11,5 +11,8 @@ namespace Exercise02 {
             return inch * raito;
 
         }
+        public static double FromMeter(double meter) {
+            return meter / raito;
+        }
     }
 }

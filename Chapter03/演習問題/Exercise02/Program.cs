@@ -1,4 +1,6 @@
 ﻿
+using System.Diagnostics.Metrics;
+
 namespace Exercise02 {
     internal class Program {
         static void Main(string[] args) {
@@ -6,7 +8,7 @@ namespace Exercise02 {
                 "Tokyo", "New Delhi", "Bangkok", "London",
                 "Paris", "Berlin", "Canberra", "Hong Kong",
             };
-
+            #region
             Console.WriteLine("***** 3.2.1 *****");
             Exercise2_1(cities);
             Console.WriteLine();
@@ -22,17 +24,20 @@ namespace Exercise02 {
             Console.WriteLine("***** 3.2.4 *****");
             Exercise2_4(cities);
             Console.WriteLine();
+            #endregion
         }
 
         private static void Exercise2_1(List<string> cities) {
             //できたらGitのコメント「問題3.2.1完成」
+            Console.Write("検索したい都市名：");
             var name = Console.ReadLine();
             var index = cities.FindIndex(s => s == name);
             Console.WriteLine(index);
         }
         private static void Exercise2_2(List<string> cities) {
-	        //できたらGitのコメント「問題3.2.2完成」
-	        
+            //できたらGitのコメント「問題3.2.2完成」
+            var count = cities.Count(s => s.Contains('o'));
+            Console.WriteLine(count);
         }
 
         private static void Exercise2_3(List<string> cities) {

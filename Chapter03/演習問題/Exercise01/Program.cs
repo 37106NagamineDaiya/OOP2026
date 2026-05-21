@@ -28,6 +28,7 @@ namespace Exercise01 {
 
         private static void Exercise2(List<int> numbers) {
             //できたらGitのコメント「問題3.1.2完成」
+            numbers.ForEach(s => Console.WriteLine(s / 2.0));
         }
 
         private static void Exercise3(List<int> numbers) {

@@ -31,7 +31,7 @@ namespace Exercise02 {
             //できたらGitのコメント「問題3.2.1完成」
             Console.Write("検索したい都市名：");
             var name = Console.ReadLine();
-            var index = cities.FindIndex(s => s == name);
+            var index = cities.FindIndex(s => s.Equals(name));
             Console.WriteLine(index);
         }
         private static void Exercise2_2(List<string> cities) {
@@ -41,8 +41,11 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_3(List<string> cities) {
-	        //できたらGitのコメント「問題3.2.3完成」
-	        
+            //できたらGitのコメント「問題3.2.3完成」
+            string[] extract = cities.Where(s => s.Contains('o')).ToArray();
+            foreach(var s in extract) {
+                Console.WriteLine(s);
+            }
         }
 
         private static void Exercise2_4(List<string> cities) {

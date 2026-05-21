@@ -33,7 +33,7 @@ namespace Exercise01 {
 
         private static void Exercise3(List<int> numbers) {
             //できたらGitのコメント「問題3.1.3完成」
-            var query = numbers.Where(s => s >= 50);
+            var query = numbers.Where(s => s >= 50).ToList();
             foreach(var s in query) {
                 Console.WriteLine(s);
             }
@@ -41,6 +41,10 @@ namespace Exercise01 {
 
         private static void Exercise4(List<int> numbers) {
             //できたらGitのコメント「問題3.1.4完成」
+            List<int> doubleNum = numbers.Select(s => s * 2).ToList();
+            foreach(var number in doubleNum) {
+                Console.WriteLine(number);
+            }
         }
     }
 }

@@ -40,7 +40,19 @@ namespace Section04 {
 
             #endregion
 
+            #region 2つの要素を入れ替える
 
+            int a = 10;
+            int b = 20;
+            Console.Write("入れ替え前：");
+            Console.WriteLine("a = " + a + ",b = " + b);
+            Console.Write("入れ替え後：");
+
+            (b, a) = (a, b);
+
+            Console.WriteLine("a = " + a + ",b = " + b);
+
+            #endregion
 
 
         }

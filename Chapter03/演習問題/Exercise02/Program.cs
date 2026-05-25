@@ -31,8 +31,15 @@ namespace Exercise02 {
             //できたらGitのコメント「問題3.2.1完成」
             Console.Write("検索したい都市名：");
             var name = Console.ReadLine();
-            var index = cities.FindIndex(s => s.Equals(name));
-            Console.WriteLine(index);
+            while (name != String.Empty) {
+                var index = cities.FindIndex(s => s.Equals(name));
+                Console.WriteLine(index);
+                Console.Write("検索したい都市名(空白で終了)：");
+                name = Console.ReadLine();
+
+            }
+
+
         }
         private static void Exercise2_2(List<string> cities) {
             //できたらGitのコメント「問題3.2.2完成」
@@ -50,11 +57,15 @@ namespace Exercise02 {
 
         private static void Exercise2_4(List<string> cities) {
             //できたらGitのコメント「問題3.2.4完成」
-            var query = cities.Where(s => s[0] == 'B').Select(s => s.Length );
-            foreach(var len in query) {
-                Console.WriteLine(len);
+            //var query = cities.Where(s => s[0] == 'B').Select(s => s.Length);
+            //foreach (var len in query) {
+            //    Console.WriteLine(len);
+            //}
+            var obj = cities.Where(s => s.StartsWith('B')).Select(s => new { s, s.Length });
+            foreach (var data in obj) {
+                Console.WriteLine(data.s + ":" + data.Length);
             }
-	        
+
         }
     }
 }

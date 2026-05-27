@@ -18,15 +18,14 @@ namespace Exercise02 {
             var num = Console.ReadLine();
             bool result = int.TryParse(num, out int number);
             if (result) {
-                int nums = int.Parse(num);
-                if (nums >= 500) {
-                    Console.WriteLine(nums);
-                } else if (nums >= 100 && nums < 500) {
-                    Console.WriteLine(nums * 3);
-                } else if (nums >= 0 && nums < 100) {
-                    Console.WriteLine(nums * 2);
+                if (number >= 500) {
+                    Console.WriteLine(number);
+                } else if (number >= 100) {
+                    Console.WriteLine(number * 3);
+                } else if (number >= 0) {
+                    Console.WriteLine(number * 2);
                 } else {
-                    Console.WriteLine(nums);
+                    Console.WriteLine(number);
                 }
             } else {
                 Console.WriteLine("入力値に誤りがあります");

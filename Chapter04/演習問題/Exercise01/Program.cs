@@ -46,11 +46,15 @@ namespace Exercise01 {
         }
 
         private static void Exercise2(List<string> langs) {
+            IEnumerable<string> names = langs.Where(s => s.Contains('S')).ToList();
+            foreach(var s in names) {
+                Console.WriteLine(s);
+            }
             
         }
 
         private static void Exercise3(List<string> langs) {
-            
+
         }
     }
 }

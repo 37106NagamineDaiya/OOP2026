@@ -70,8 +70,6 @@ namespace Exercise02 {
                 _ => number
             };
             Console.WriteLine(num1);
-
-
         }
     }
 }

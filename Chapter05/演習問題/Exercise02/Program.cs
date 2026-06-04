@@ -42,7 +42,13 @@ namespace Exercise02 {
         }
 
         private static void Exercise5(YearMonth[] ymCollection) {
-
+            var newCollection = new YearMonth[ymCollection.Length];
+            for (var i = 0; i < newCollection.Length; i++) {
+                newCollection[i] = ymCollection[i].AddOneMonth();
+            }
+            foreach(var item in ymCollection) {
+                Console.WriteLine(item);
+            }
         }
     }
 }

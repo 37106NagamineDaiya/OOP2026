@@ -38,14 +38,11 @@ namespace Exercise02 {
         }
 
         private static void Exercise4(YearMonth[] ymCollection) {
-            var ym = Exercise3(ymCollection);
-            Console.WriteLine(ym?.ToString() ?? "21世紀のデータはありません");
+            Console.WriteLine(Exercise3(ymCollection)?.ToString() ?? "21世紀のデータはありません");
         }
 
         private static void Exercise5(YearMonth[] ymCollection) {
 
-
-            
         }
     }
 }

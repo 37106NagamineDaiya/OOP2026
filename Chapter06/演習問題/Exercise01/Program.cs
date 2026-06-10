@@ -10,6 +10,9 @@
                 Console.WriteLine("等しくない");
               }
 
+
+            
+
         }
     }
 }

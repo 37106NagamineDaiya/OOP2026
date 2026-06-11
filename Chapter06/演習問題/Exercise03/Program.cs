@@ -30,7 +30,11 @@ namespace Exercise03 {
         }
 
         private static void Exercise2(string text) {
-            var replaced = text.Replace("big", "small");
+            Console.Write("検索：");
+            var serch = Console.ReadLine();
+            Console.Write("置換：");
+            var replacement = Console.ReadLine();
+            var replaced = text.Replace(serch, replacement);
             Console.WriteLine(replaced);
         }
 
@@ -39,11 +43,15 @@ namespace Exercise03 {
         }
 
         private static void Exercise4(string text) {
-            
+            var texts = text.Split(' ');
+
+            Console.WriteLine(texts.Length);
         }
 
         private static void Exercise5(string text) {
-            
+            var words = text.Split().Where(w => w.Length <= 4);
+            Console.WriteLine(string.Join(",",words));
+
         }
 
         private static void Exercise6(string text) {

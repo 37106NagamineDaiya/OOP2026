@@ -1,4 +1,6 @@
 ﻿
+using System.Net.NetworkInformation;
+
 namespace Exercise03 {
     internal class Program {
         static void Main(string[] args) {
@@ -49,13 +51,39 @@ namespace Exercise03 {
         }
 
         private static void Exercise5(string text) {
-            var words = text.Split().Where(w => w.Length <= 4);
-            Console.WriteLine(string.Join(",",words));
+            var texts = text.Split().Where(c => c.Length <= 4);
+            foreach (var item in texts) {
+                Console.WriteLine(item);
+            }
 
         }
-
+        //アルファベットの数をカウントして表示する
         private static void Exercise6(string text) {
-            
+            var str = text.ToLower().Replace(" ","");
+            //辞書を使う方法
+            //var alphDicCount = Enumerable.Range('a', 26).
+            //    ToDictionary(num => ((char)num).ToString(), num => 0);
+
+            var dict = new SortedDictionary<char, int>();
+            foreach (var c in str) {
+                if (dict.ContainsKey(c))
+                    dict[c]++;
+                else
+                    dict[c] = 1;
+
+            }
+            foreach (var word in dict) {
+                Console.WriteLine(word.Key + ":" + word.Value);
+                
+            }
+            //配列を用いた集計
+
+
+
+            //'a'から順にカウントして集計
+
+
+
         }
     }
 }

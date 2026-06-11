@@ -61,18 +61,14 @@ namespace Exercise03 {
         private static void Exercise6(string text) {
             var str = text.ToLower().Replace(" ","");
             //辞書を使う方法
-            //var alphDicCount = Enumerable.Range('a', 26).
-            //    ToDictionary(num => ((char)num).ToString(), num => 0);
+            var alphDicCount = Enumerable.Range('a', 26).
+                ToDictionary(num => ((char)num), num => 0);
 
-            var dict = new SortedDictionary<char, int>();
+            //var dict = new SortedDictionary<char, int>();
             foreach (var c in str) {
-                if (dict.ContainsKey(c))
-                    dict[c]++;
-                else
-                    dict[c] = 1;
-
+                alphDicCount[c]++;
             }
-            foreach (var word in dict) {
+            foreach (var word in alphDicCount) {
                 Console.WriteLine(word.Key + ":" + word.Value);
                 
             }

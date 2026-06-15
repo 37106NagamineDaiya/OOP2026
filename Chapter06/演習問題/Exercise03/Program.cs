@@ -1,6 +1,8 @@
 ﻿
 using System.Net.NetworkInformation;
 using System.Net.WebSockets;
+using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace Exercise03 {
     internal class Program {
@@ -42,7 +44,25 @@ namespace Exercise03 {
         }
 
         private static void Exercise3(string text) {
+            var words = text.Split(' ');
+            var sb = new StringBuilder(words[0]);
+
+            //sb.Append(words[0]);
+
+            //for(int i = 1; i < words.Length; i++) {
+            //    sb.Append(' ');
+            //    sb.Append(words[i]);
+
+            //}
+
+            foreach(var word in words.Skip(1)) {
+
+                sb.Append(' ');
+                sb.Append(word);
+
+            }
             
+            Console.WriteLine(sb + ".");
         }
 
         private static void Exercise4(string text) {

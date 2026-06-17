@@ -2,7 +2,16 @@
     internal class Program {
         static void Main(string[] args) {
             var line = "Novelist=谷崎潤一郎;BestWork=春琴抄;Born=1886";
+            var sp = line.Split(";");
             
+            foreach(var item in sp) {
+                var pair = item.Split("=");
+
+                var key = pair[0];
+                var value = pair[1];
+
+                Console.WriteLine($"{ToJapanese(key)}:{value}");
+            }
 
             
 

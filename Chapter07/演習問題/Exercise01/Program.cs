@@ -51,7 +51,13 @@ namespace Exercise01 {
         }
 
         private static void Exercise5(int[] numbers) {
-            
+            var DisNum = numbers.Distinct().Count(n => n > 10);
+            Console.WriteLine(DisNum);
+
+
+
+
+
         }
     }
 }

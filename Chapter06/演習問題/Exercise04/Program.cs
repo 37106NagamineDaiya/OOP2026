@@ -7,10 +7,7 @@
             foreach(var item in sp) {
                 var pair = item.Split("=");
 
-                var key = pair[0];
-                var value = pair[1];
-
-                Console.WriteLine($"{ToJapanese(key)}:{value}");
+                Console.WriteLine($"{ToJapanese(pair[0])}:{pair[1]}");
             }
 
             

@@ -35,11 +35,16 @@ namespace Exercise01 {
         }
 
         private static void Exercise3(int[] numbers) {
+            var strings = numbers.Select(n => n.ToString("000"));
+            foreach (var item in strings) {
+                Console.WriteLine(item);
+            }
             
         }
 
         private static void Exercise4(int[] numbers) {
-            
+
+
         }
 
         private static void Exercise5(int[] numbers) {

@@ -21,15 +21,17 @@ namespace Exercise01 {
             Console.WriteLine("\n7.1.5");
             Exercise5(numbers);
         }
-
+       
         private static void Exercise1(int[] numbers) {
             var MaxNum = numbers.Max();
             Console.WriteLine(MaxNum);
         }
 
         private static void Exercise2(int[] numbers) {
+            foreach (var num in numbers.TakeLast(2)) {
+                Console.WriteLine(num);
+            }
 
-            
         }
 
         private static void Exercise3(int[] numbers) {

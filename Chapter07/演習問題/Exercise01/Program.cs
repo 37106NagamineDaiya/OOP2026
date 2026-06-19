@@ -43,7 +43,10 @@ namespace Exercise01 {
         }
 
         private static void Exercise4(int[] numbers) {
+            foreach (var num in numbers.OrderDescending().Take(3)) {
+                Console.WriteLine(num);
 
+            }
 
         }
 

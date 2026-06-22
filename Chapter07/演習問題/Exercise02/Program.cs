@@ -47,8 +47,7 @@ namespace Exercise02 {
         }
 
         private static void Exercise3(List<Book> books) {
-            var cs = books.Where(n => n.Title.Contains("C#"));
-            var avePage = cs.Average(x => x.Pages);
+            var avePage = books.Where(n => n.Title.Contains("C#")).Average(x => x.Pages); 
             Console.WriteLine(avePage);
         }
 

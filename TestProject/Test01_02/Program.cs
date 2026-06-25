@@ -62,10 +62,7 @@ namespace Test01_02 {
 
         //問題１　合計値を表示（式形式で記述せよ）
         //　　　　出力結果【618】
-        private static void Exercise01(int[] numbers) {
-            var sum = numbers.Sum();
-            Console.WriteLine(sum);
-        }
+        private static void Exercise01(int[] numbers) => Console.WriteLine(numbers.Sum());
 
 
         //問題２　偶数の最大値を表示（式形式で記述せよ）
@@ -170,7 +167,10 @@ namespace Test01_02 {
         //        【London
         //          Berlin】
         private static void Exercise10(List<string> cities) {
-        
+            foreach (var item in cities.Where(s => s.Length == 6)) {
+                Console.WriteLine(item);
+            }
+
 
         }
     }

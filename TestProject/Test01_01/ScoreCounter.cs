@@ -31,12 +31,12 @@
             var dict = new Dictionary<string, int>();
             foreach (Student student in _score) {
                 
-                if (dict.ContainsKey(student.Name))
+                if (dict.ContainsKey(student.Subject))
                    
-                    dict[student.Name] += student.Score;
+                    dict[student.Subject] += student.Score;
                 else
                     
-                    dict[student.Name] = student.Score; 
+                    dict[student.Subject] = student.Score; 
             }
             return dict;
         }

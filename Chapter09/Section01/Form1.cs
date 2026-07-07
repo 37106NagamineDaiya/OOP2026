@@ -17,6 +17,8 @@ namespace Section01 {
         private void bt_Click(object sender, EventArgs e) {
             DateTime birth = dtpBirth.Value;
             DateTime today = DateTime.Today;
+            var culture = new CultureInfo("ja-JP");
+            var dayOfWeek = culture.DateTimeFormat.GetShortestDayName(birth.DayOfWeek);
 
             TimeSpan diff = today - birth;
             tbOut2.Text = diff.Days.ToString();
@@ -27,6 +29,13 @@ namespace Section01 {
             //}
             
             tbOut.Text = $"Ç†Ç»ÇΩÇÕ{GetAge(birth,today)}çŒÇ≈Ç∑";
+
+
+
+
+
+            tbOut3.Text = $"ê∂Ç‹ÇÍÇΩ{birth.Month}åé{birth.Day}ì˙ÇÕëÊ{NthWeek(birth)}èTÇÃ{dayOfWeek}ójì˙Ç≈Ç∑";
+
         }
 
         static int GetAge(DateTime birthday,DateTime targetDay) {
@@ -37,6 +46,11 @@ namespace Section01 {
             return age;
         }
 
+        static int NthWeek(DateTime date) {
+            var firstDay = new DateTime(date.Year, date.Month, 1);
+            var firstDayOfWeek = (int)(firstDay.DayOfWeek);
+            return (date.Day + firstDayOfWeek - 1) / 7 + 1;
+        }
 
     }
 }

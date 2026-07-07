@@ -34,6 +34,8 @@
             tbOut2 = new TextBox();
             label3 = new Label();
             label4 = new Label();
+            tbOut3 = new TextBox();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)nudDay).BeginInit();
             SuspendLayout();
             // 
@@ -135,11 +137,31 @@
             label4.TabIndex = 11;
             label4.Text = "経過日数";
             // 
+            // tbOut3
+            // 
+            tbOut3.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            tbOut3.Location = new Point(96, 425);
+            tbOut3.Multiline = true;
+            tbOut3.Name = "tbOut3";
+            tbOut3.Size = new Size(332, 87);
+            tbOut3.TabIndex = 12;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(66, 461);
+            label5.Name = "label5";
+            label5.Size = new Size(24, 15);
+            label5.TabIndex = 11;
+            label5.Text = "メモ";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(454, 757);
+            Controls.Add(tbOut3);
+            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(tbOut2);
@@ -171,5 +193,7 @@
         private TextBox tbOut2;
         private Label label3;
         private Label label4;
+        private TextBox tbOut3;
+        private Label label5;
     }
 }

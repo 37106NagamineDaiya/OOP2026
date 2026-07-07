@@ -14,7 +14,6 @@ namespace Section01 {
         }
 
 
-
         private void bt_Click(object sender, EventArgs e) {
             DateTime birth = dtpBirth.Value;
             DateTime today = DateTime.Today;

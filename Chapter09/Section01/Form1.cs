@@ -21,12 +21,20 @@ namespace Section01 {
             TimeSpan diff = today - birth;
             tbOut2.Text = diff.Days.ToString();
 
-            int age = today.Year - birth.Year;
-            if (today < birth.AddYears(age)) {
+            //int age = today.Year - birth.Year;
+            //if (today < birth.AddYears(age)) {
+            //    age--;
+            //}
+            
+            tbOut.Text = $"‚ ‚È‚½‚Í{GetAge(birth,today)}Î‚Å‚·";
+        }
+
+        static int GetAge(DateTime birthday,DateTime targetDay) {
+            var age = targetDay.Year - birthday.Year;
+            if(targetDay < birthday.AddYears(age)) {
                 age--;
             }
-            
-            tbOut.Text = $"‚ ‚È‚½‚Í{age}Î‚Å‚·";
+            return age;
         }
 
 

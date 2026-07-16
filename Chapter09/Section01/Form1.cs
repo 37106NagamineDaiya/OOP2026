@@ -19,9 +19,11 @@ namespace Section01 {
             DateTime today = DateTime.Today;
             var culture = new CultureInfo("ja-JP");
             var dayOfWeek = culture.DateTimeFormat.GetShortestDayName(birth.DayOfWeek);
+            DateTime nextBirthday = new DateTime(today.Year, birth.Month, birth.Day);
 
             TimeSpan diff = today - birth;
             tbOut2.Text = diff.Days.ToString();
+
 
             //int age = today.Year - birth.Year;
             //if (today < birth.AddYears(age)) {
@@ -30,11 +32,24 @@ namespace Section01 {
             
             tbOut.Text = $"‚ ‚È‚½‚Í{GetAge(birth,today)}Î‚Å‚·";
 
-
-
-
-
             tbOut3.Text = $"¶‚Ü‚ê‚½{birth.Month}ŒŽ{birth.Day}“ú‚Í‘æ{NthWeek(birth)}T‚Ì{dayOfWeek}—j“ú‚Å‚·";
+
+            if(today.Month == birth.Month && today.Day == birth.Day) {
+                tbOut4.Text = "’a¶“ú‚Í¡“ú‚Å‚·";
+            } else if (nextBirthday < today) {
+                nextBirthday = nextBirthday.AddYears(1);
+                int days = (nextBirthday - today).Days;
+                tbOut4.Text = $"ŽŸ‚Ì’a¶“ú‚Í—ˆ”N‚Å‚ ‚Æ{days}“úŒã‚Å‚·";
+            } else {
+                int days = (nextBirthday - today).Days;
+                tbOut4.Text = $"ŽŸ‚Ì’a¶“ú‚Ü‚Å‚ ‚Æ{days}“ú‚Å‚·";
+            }
+
+
+
+
+
+
 
         }
 

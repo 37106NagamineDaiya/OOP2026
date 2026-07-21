@@ -73,7 +73,7 @@ namespace CarReportSystem {
 
         private void dgvRecords_Click(object sender, EventArgs e) {
 
-            if(dgvRecords.CurrentRow is null ) return;
+            if (dgvRecords.CurrentRow is null) return;
 
             dtpDate.Value = (DateTime)dgvRecords.CurrentRow.Cells["Date"].Value;
             cbAuthor.Text = (string)dgvRecords.CurrentRow.Cells["Author"].Value;
@@ -117,7 +117,7 @@ namespace CarReportSystem {
 
             if (!cbAuthor.Items.Contains(author)) {
                 cbAuthor.Items.Add(author);
-                
+
             }
 
         }
@@ -127,6 +127,14 @@ namespace CarReportSystem {
             if (!cbCarName.Items.Contains(carName)) {
                 cbCarName.Items.Add(carName);
             }
+        }
+
+        private void btDeletePicture_Click(object sender, EventArgs e) {
+            pbPicture.Image = null;
+        }
+        //削除したいインデックスを指定してリストから削除
+        private void btDeleteRecord_Click(object sender, EventArgs e) {
+            listCarReports.RemoveAt(dgvRecords.CurrentRow.Index);
         }
     }
 }

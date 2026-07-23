@@ -176,5 +176,19 @@ namespace CarReportSystem {
             pbPicture.Image = (Image)dgvRecords.CurrentRow.Cells["Picture"].Value;
             InputItemsUpdate(); //データグリッドビューを更新したら呼ぶメソッド
         }
+
+        private void 終了ToolStripMenuItem_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
+
+        private void button7_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
+
+        private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (cdColor.ShowDialog() == DialogResult.OK) {
+                this.BackColor = cdColor.Color;
+            }
+        }
     }
 }

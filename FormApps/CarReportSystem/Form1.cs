@@ -28,9 +28,14 @@ namespace CarReportSystem {
                     //P286以降を参考にする（ファイル名：setting.xml）
                     using (var reader = XmlReader.Create("setting.xml")) {
                         var serializer = new XmlSerializer(typeof(Settings));
-                        settings = serializer.Deserialize(reader) as Settings;
-                        //背景色設定
-                        BackColor = Color.FromArgb(settings.MainFormBackColor);
+
+                        if(serializer.Deserialize(reader) is Settings loadedSettings) {
+                            settings = loadedSettings;
+                            //背景色設定
+                            BackColor = Color.FromArgb(settings.MainFormBackColor);
+                        }
+
+
                     }
                 }
                 catch (Exception ex) {
@@ -88,7 +93,7 @@ namespace CarReportSystem {
         }
         private void btOpenPicture_Click(object sender, EventArgs e) {
             if (ofdPicFileOpen.ShowDialog() == DialogResult.OK) {
-                pbPicture.Image = Image.FromFile(ofdReportFileOpen.FileName);
+                pbPicture.Image = Image.FromFile(ofdPicFileOpen.FileName);
             }
         }
         private void btNewInput_Click(object sender, EventArgs e) {

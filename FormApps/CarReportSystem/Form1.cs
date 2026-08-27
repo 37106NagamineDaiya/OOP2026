@@ -25,19 +25,8 @@ namespace CarReportSystem {
             //ファイルが存在するか？
             if (File.Exists("setting.xml")) {
                 try {
-
-                    //P286以降を参考にする（ファイル名：setting.xml）
-                    using (var reader = XmlReader.Create("setting.xml")) {
-                        var serializer = new XmlSerializer(typeof(Settings));
-
-                        if(serializer.Deserialize(reader) is Settings loadedSettings) {
-                            settings = loadedSettings;
-                            //背景色設定
-                            BackColor = Color.FromArgb(Settings.Instance.MainFormBackColor);
-                        }
-
-
-                    }
+                    Settings.Instance.Load();
+                    BackColor = Color.FromArgb(Settings.Instance.MainFormBackColor);
                 }
                 catch (Exception ex) {
                     tsslbMessage.Text = "設定ファイル読み込みエラー";
@@ -236,10 +225,9 @@ namespace CarReportSystem {
             //設定ファイルへ色情報を保存する処理（シリアル化）
             //P284以降を参考にする（ファイル名：setting.xml）
 
-            using (var writer = XmlWriter.Create("setting.xml")) {
-                var serializer = new XmlSerializer(Settings.Instance.GetType());
-                serializer.Serialize(writer, Settings.Instance);
-            }
+            Settings.Instance.Save();
+
+
         }
 
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {

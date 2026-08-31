@@ -1,8 +1,35 @@
 using Microsoft.Data.Sqlite;
+using System.Xml.Schema;
 
 namespace SQLiteProductSample;
 
 public class ProductRepository
 {
-    
+    //全商品を取得する。Read（SELECT）に相当する
+    public List<Product> GetAll() {
+        var products = new List<Product>();
+        using var connection = Database.GetConnection();
+        connection.Open();
+
+        //SQLを実行するためのコマンドオブジェクトを作る
+        using var command = connection.CreateCommand();
+
+        //Productsテーブルに作るSQL
+        command.CommandText =
+            """
+            SELECT Id,Name,Price
+            FROM Products
+            ORDER BY Id;
+            """;
+        //SELECTを実行し、複数行の検索結果を読み取る
+        using var reader = command.ExecuteReader();
+
+        while (reader.Read()) {
+            products.Add(new Product {
+                Id = reader.GetInt32(0),
+                Name = reader.GetString(1),
+                Price = reader.GetInt32(2)
+            });
+        }
+    }
 }

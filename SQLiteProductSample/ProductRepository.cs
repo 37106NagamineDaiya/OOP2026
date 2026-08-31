@@ -30,6 +30,8 @@ public class ProductRepository
                 Name = reader.GetString(1),
                 Price = reader.GetInt32(2)
             });
+           
         }
+        return products;
     }
 }

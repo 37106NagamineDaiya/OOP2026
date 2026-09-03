@@ -34,4 +34,56 @@ public class ProductRepository
         }
         return products;
     }
+
+    public void Add(string name, int price) {
+        using var connection = Database.GetConnection();
+        connection.Open();
+
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            INSERT INTO Products (Name,Price)
+            VALUES ($name,$price);
+            """;
+
+        command.Parameters.AddWithValue("$name", name);
+        command.Parameters.AddWithValue("&price", price);
+
+        command.ExecuteNonQuery();
+    }
+
+    public void Update(Product product) {
+        using var connection = Database.GetConnection();
+        connection.Open();
+
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            UPDATE Products
+            SET Name = $name,
+                Price = $price
+            WHERE Id = $id;
+            """;
+
+        command.Parameters.AddWithValue("$name",product.Name);
+        command.Parameters.AddWithValue("$price",product.Price);
+        command.Parameters.AddWithValue("$id",product.Id);
+
+        command.ExecuteNonQuery();
+    }
+
+    public void Delete(int id) {
+        using var connection = Database.GetConnection();
+        connection.Open();
+
+        using var command = connection.CreateCommand();
+        command.CommandText =
+            """
+            DELETE FROM Products
+            WHERE Id = $id;
+            """;
+        command.Parameters.AddWithValue("$id", id);
+        command.ExecuteNonQuery();
+    }
+
 }

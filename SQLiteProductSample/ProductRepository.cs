@@ -47,7 +47,7 @@ public class ProductRepository
             """;
 
         command.Parameters.AddWithValue("$name", name);
-        command.Parameters.AddWithValue("&price", price);
+        command.Parameters.AddWithValue("$price", price);
 
         command.ExecuteNonQuery();
     }

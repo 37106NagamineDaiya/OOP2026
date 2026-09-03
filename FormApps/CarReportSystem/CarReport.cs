@@ -26,3 +26,4 @@
         public Image? Picture { get; set; } //画像
     }
 }
+

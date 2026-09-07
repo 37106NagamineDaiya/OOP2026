@@ -40,5 +40,30 @@ namespace CarReportSystem {
             }
             return carReports;
         }
+        public void Add(DateTime date, string author, CarReport.MakerGroup maker,string carName,string report,Image picture) {
+            using var connection = Database.GetConnection();
+            connection.Open();
+
+            using var command = connection.CreateCommand();
+            command.CommandText =
+                """
+            INSERT INTO CarReports
+            (Date,Author,Maker,CarName,CarName,Report,Picture)
+            VALUES
+            ($date,$author,$maker,$carName,$report,$picture);
+
+            SELECT last_insert_rowid();
+            """;
+
+            command.Parameters.AddWithValue("$date", date);
+            command.Parameters.AddWithValue("$author", author);
+            command.Parameters.AddWithValue("$maker", maker);
+            command.Parameters.AddWithValue("$carName", carName);
+            command.Parameters.AddWithValue("$report", report);
+            command.Parameters.AddWithValue("$picture", picture);
+
+
+            command.ExecuteNonQuery();
+        }
     }
 }

@@ -65,6 +65,7 @@ namespace CarReportSystem {
 
             command.ExecuteNonQuery();
         }
+
         public void Update(CarReport carReport) {
             using var connection = Database.GetConnection();
             connection.Open();
@@ -86,6 +87,20 @@ namespace CarReportSystem {
             command.Parameters.AddWithValue("$picture", carReport.Picture);
             command.Parameters.AddWithValue("$id", carReport.Id);
 
+            command.ExecuteNonQuery();
+        }
+
+        public void Delete(int id) {
+            using var connection = Database.GetConnection();
+            connection.Open();
+
+            using var command = connection.CreateCommand();
+            command.CommandText =
+                """
+            DELETE FROM CarReports
+            WHERE Id = $id;
+            """;
+            command.Parameters.AddWithValue("$id", id);
             command.ExecuteNonQuery();
         }
     }

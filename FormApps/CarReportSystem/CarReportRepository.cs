@@ -65,5 +65,28 @@ namespace CarReportSystem {
 
             command.ExecuteNonQuery();
         }
+        public void Update(CarReport carReport) {
+            using var connection = Database.GetConnection();
+            connection.Open();
+
+            using var command = connection.CreateCommand();
+            command.CommandText =
+                """
+            UPDATE CarReports
+            SET Date = $date,Author = $author,Maker = $maker,
+                CarName = $carName,Report = $report,Picture = $picture
+            WHERE Id = $id;
+            """;
+
+            command.Parameters.AddWithValue("$date", carReport.Date);
+            command.Parameters.AddWithValue("$author", carReport.Author);
+            command.Parameters.AddWithValue("$maker", carReport.Maker);
+            command.Parameters.AddWithValue("$carName", carReport.CarName);
+            command.Parameters.AddWithValue("$report", carReport.Report);
+            command.Parameters.AddWithValue("$picture", carReport.Picture);
+            command.Parameters.AddWithValue("$id", carReport.Id);
+
+            command.ExecuteNonQuery();
+        }
     }
 }

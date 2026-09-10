@@ -15,6 +15,9 @@ namespace CarReportSystem {
         private static readonly string ConnectionString =
             $"Data Source = {DatabasePath}";
 
+        public static string FilePath => DatabasePath;
+
+
         //新しいSQLiteConnectionを生成して返す
         public static SqliteConnection GetConnection()
             => new SqliteConnection(ConnectionString);

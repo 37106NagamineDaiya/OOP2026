@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
+using System.Xml.Serialization;
 
 namespace CarReportSystem {
-    [Serializable]
-    internal class CarReport {
+    public class CarReport {
         
         //列挙型
         public enum MakerGroup {
@@ -28,6 +28,8 @@ namespace CarReportSystem {
         public string Report { get; set; } = string.Empty; //レポート
         [DisplayName("画像")]
         public Image? Picture { get; set; } //画像
+
+
     }
 }
 

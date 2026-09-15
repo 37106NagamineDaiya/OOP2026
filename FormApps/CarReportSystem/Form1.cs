@@ -31,7 +31,7 @@ namespace CarReportSystem {
             dgvRecords.DataSource = listCarReports;
         }
 
-            private void ReloadCarReport() {
+        private void ReloadCarReport() {
             listCarReports.Clear();
 
             var reports = repository.GetAll();
@@ -42,7 +42,7 @@ namespace CarReportSystem {
             }
         }
 
-        
+
 
 
         private void Form1_Load(object sender, EventArgs e) {
@@ -100,7 +100,7 @@ namespace CarReportSystem {
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
 
-                
+
             }
         }
 
@@ -302,76 +302,28 @@ namespace CarReportSystem {
 
         }
 
-        private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {
-            //reportSaveFile();
+        private void このアプリについてToolStripMenuItem_Click(object sender, EventArgs e) {
+            MessageBox.Show(
+                "Car Report System\n\n" +
+                "【アプリ概要】\n" +
+                "自動車に関するレポートを登録・管理するためのアプリです。\n\n" +
+                "【主な機能】\n" +
+                "・カーレポートの登録\n" +
+                "・登録したレポートの修正・削除\n" +
+                "・メーカーや車名の管理\n" +
+                "・車両写真の登録\n" +
+                "・レポート情報のデータベース保存\n\n" +
+                "【バージョン】\n" +
+                "Version 1.0\n\n" +
+                "Car Report Systemを利用して、\n" +
+                "車に関する情報を簡単に管理できます。",
+
+                "このアプリについて",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
 
-        private void 開くToolStripMenuItem_Click(object sender, EventArgs e) {
-            //reportOpenFile();
-        }
-
-        ////ファイルセーブ処理
-        //private void reportSaveFile() {
-        //    if (sfdReportFileSave.ShowDialog() != DialogResult.OK)
-        //        return;
-
-        //    try {
-        //        XmlSerializer serializer =
-        //            new XmlSerializer(typeof(BindingList<CarReport>));
-
-        //        using FileStream fs =
-        //            new FileStream(
-        //                sfdReportFileSave.FileName,
-        //                FileMode.Create);
-
-        //        serializer.Serialize(fs, listCarReports);
-
-        //        tsslbMessage.Text = "ファイルを保存しました";
-        //    }
-        //    catch (Exception ex) {
-        //        tsslbMessage.Text = "ファイル書き出しエラー";
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
-
-
-        ////ファイルオープン処理
-        //// ファイルオープン処理
-        //private void reportOpenFile() {
-        //    if (ofdReportFileOpen.ShowDialog() == DialogResult.OK) {
-        //        try {
-        //            // XML形式を逆シリアル化
-        //            var serializer =
-        //                new XmlSerializer(typeof(BindingList<CarReport>));
-
-        //            using (FileStream fs = File.Open(
-        //                ofdReportFileOpen.FileName,
-        //                FileMode.Open,
-        //                FileAccess.Read)) {
-        //                listCarReports =
-        //                    (BindingList<CarReport>)serializer.Deserialize(fs)!;
-
-        //                dgvRecords.DataSource = listCarReports;
-        //            }
-
-        //            // コンボボックスの履歴をすべて消す
-        //            cbAuthor.Items.Clear();
-        //            cbCarName.Items.Clear();
-
-        //            // コンボボックスの履歴を再登録
-        //            foreach (var report in listCarReports) {
-        //                SetCbAuthor(report.Author);
-        //                SetCbCarName(report.CarName);
-        //            }
-
-        //            tsslbMessage.Text = "ファイルを読み込みました";
-        //        }
-        //        catch (Exception ex) {
-        //            tsslbMessage.Text = "ファイル読み出しエラー";
-        //            MessageBox.Show(ex.Message);
-        //        }
-        //    }
-        //}
 
     }
 }

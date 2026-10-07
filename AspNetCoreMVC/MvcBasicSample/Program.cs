@@ -3,34 +3,34 @@ using MvcBasicSample.Data;            // AppDbContextを使用
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// ControllerとViewを使うMVCの機能を登録する 
 builder.Services.AddControllersWithViews();
 
 // DefaultConnectionという名前の接続文字列を取得する 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")?? throw new InvalidOperationException("接続文字列がありません");
+var connectionString = builder.Configuration
+    .GetConnectionString("DefaultConnection")
+    ?? throw new InvalidOperationException("接続文字列がありません");
 
 // AppDbContextを生成するときに使用するSQL Serverの接続設定を登録する 
-builder.Services.AddDbContext<AppDbContext>(options =>options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(connectionString));
 
+var app = builder.Build();            // 設定からアプリを生成 
 
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
+// 開発環境以外で使うエラー画面とHTTPSの設定 
 if (!app.Environment.IsDevelopment()) {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseHttpsRedirection();            // HTTPからHTTPSへ転送 
+app.UseStaticFiles();                 // wwwrootにあるCSSやJavaScriptなどを配信 
+app.UseRouting();                     // URLとControllerのActionを対応付ける 
+app.UseAuthorization();               // 設定されているアクセス許可を確認 
 
-app.UseRouting();
-
-app.UseAuthorization();
-
+// URLをControllerとActionに対応付ける 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.Run();
+app.Run();                            // Webサーバーを起動して要求の受信を開始

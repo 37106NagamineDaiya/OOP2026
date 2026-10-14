@@ -1,0 +1,15 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@* カート画面はSessionから取り出したCartItem一覧を受け取る *@ 
+@model List<SelfOrderSystem.Models.CartItem>
+
+@{
+    ViewData["Title"] = "カート";
+    var total = Model.Sum(x => x.LineTotal);                        // 画面表示用に合計金額を計算する
+}
+
+<h1 class="h3 mb-3">カート</h1>
+
+@* カートが空なら商品一覧へ戻る案内を表示する *@ 

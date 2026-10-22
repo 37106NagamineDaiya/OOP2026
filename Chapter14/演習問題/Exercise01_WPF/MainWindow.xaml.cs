@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using System.IO;
-using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,7 +11,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 
 namespace Exercise01_WPF {
     /// <summary>
@@ -31,21 +29,17 @@ namespace Exercise01_WPF {
         }
     }
 
-    //非同期ファイル読み込み処理
+    //非同期のファイル読み込み処理
     static class TextReaderSample {
-        public static async Task<string>ReadTextAsync(string fileName) {
+        public static async Task<string> ReadTextAsync(string fileName) {
             var sb = new StringBuilder();
-            //ここに非同期でテキストファイルを読み込み処理を記述する
+
+            //ここに非同期でテキストファイルを読み込む処理を記述する
             var sr = new StreamReader(fileName);
-            string? line;
-            while ((line = await sr.ReadLineAsync()) != null) {
+            while (!sr.EndOfStream) {
+                var line = await sr.ReadLineAsync();
                 sb.AppendLine(line);
             }
-            sr.Close();
-
-
-
-
             return sb.ToString();
         }
     }

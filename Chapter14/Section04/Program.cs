@@ -6,17 +6,20 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 
 var httpClient = new HttpClient();
-await GetHtmlExsample(httpClient);
+await GetHtmlExample(httpClient);
 
-static async Task GetHtmlExsample(HttpClient httpClient) {
-    var url = "https://www.yahoo.co.jp";
+static async Task GetHtmlExample(HttpClient httpClient) {
+    var url = "https://www.yahoo.co.jp/";
     //var text = await httpClient.GetStringAsync(url);
+
     httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(
-        "MyWikipediaClient/1.0 (https://example.com/; contact@example.com)"
+        "MyWikipediaCliant/1.0 (https://example.com/; contact@example.com)"
     );
-    var text = await GetFromWikipediaAsync(httpClient, "伊勢崎市");
+
+    var text = await GetFromWikipediaAsync(httpClient, "伊勢崎市"); 
     Console.WriteLine(text);
 }
+
 
 //コード14.14
 static async Task<string> GetFromWikipediaAsync(HttpClient httpClient, string keyword) {

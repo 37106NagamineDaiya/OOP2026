@@ -13,35 +13,26 @@ namespace Section03 {
             //await Task.Delay(5000);
             //MessageBox.Show("Š®—¹");
 
-            //await Task.Run(() => DoLongTimeWork());
-
-            //await DoLongTimeWorkAsync();
-            //MessageBox.Show("Š®—¹");
-
-            var elapsed = await DoLongTimeWorkAsync(4000);
-            MessageBox.Show($"Š®—¹,{elapsed}ƒ~ƒŠ•b");
+            var elapsed = await DoLongTimeWork(5000);
+            MessageBox.Show(elapsed + "ƒ~ƒŠ•b");
 
         }
-
-        //private void DoLongTimeWork() {
-        //    Thread.Sleep(5000);
-        //}
-
-        private async Task DoLongTimeWorkAsync() {
+        //–ß‚è’l‚È‚µ
+        private async Task DoLongTimeWork() {
             await Task.Run(() => {
                 Thread.Sleep(5000);
-
             });
         }
 
-        private async Task<long> DoLongTimeWorkAsync(int milliseconds) {
+        //–ß‚è’l‚ ‚è
+        private async Task<long> DoLongTimeWork(int milliseconds) {
             var sw = Stopwatch.StartNew();
             await Task.Run(() => {
-                Thread.Sleep(5000);
-
+                Thread.Sleep(milliseconds);
             });
             sw.Stop();
             return sw.ElapsedMilliseconds;
         }
+
     }
 }

@@ -23,6 +23,9 @@ builder.Services.AddSession(options => // Session ‹@”\‚ð“o˜^
 builder.Services.AddHttpContextAccessor(); // Controller ˆÈŠO‚ÌƒNƒ‰ƒX‚©‚çHttpContext ‚ðŽæ“¾‚Å‚«‚é‚æ‚¤‚É‚·‚é
 builder.Services.AddScoped<CartService>(); // CartService ‚ðDI ‚Ö“o˜^‚µController‚ÅŽó‚¯Žæ‚ê‚é‚æ‚¤‚É‚·‚é
 
+
+builder.Services.AddScoped<IOrderService, OrderService>();
+
 var app = builder.Build();
 
 // ’Ç‰Á

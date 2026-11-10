@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Exercise03;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,11 @@ namespace TextFileProcessorDi {
             _service.Initialize(fileName);
             var lines = File.ReadLines(fileName);
             foreach(var line in lines) {
-                _service.Execute(line);
+                
+                if (!_service.Execute(line)) {
+                    break;
+                }
+
             }
             _service.Terminate();
         }

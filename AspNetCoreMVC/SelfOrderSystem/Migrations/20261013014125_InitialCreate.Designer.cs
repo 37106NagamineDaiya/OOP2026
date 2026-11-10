@@ -11,7 +11,7 @@ using SelfOrderSystem.Data;
 namespace SelfOrderSystem.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20261013014334_InitialCreate")]
+    [Migration("20261013014125_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -37,7 +37,7 @@ namespace SelfOrderSystem.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("SortOder")
+                    b.Property<int>("SortOrder")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

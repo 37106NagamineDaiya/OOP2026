@@ -10,5 +10,4 @@ public class Order {
     public DateTimeOffset OrderedAtUtc { get; set; } // UTC の注文日時
     public OrderStatus Status { get; set; } = OrderStatus.New;
     public List<OrderItem> Items { get; set; } = new();
-
 }

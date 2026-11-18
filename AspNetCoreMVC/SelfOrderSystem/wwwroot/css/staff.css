@@ -1,11 +1,8 @@
-﻿
-/* スタッフ画面全体 */
-.staff-page {
+﻿.staff-page {
     padding: 20px 0 50px;
-    color: #18283e;
+    color: #f4edf0;
 }
 
-/* ページの見出し */
 .staff-header {
     display: flex;
     justify-content: space-between;
@@ -16,37 +13,38 @@
 
     .staff-header h1 {
         font-size: 2rem;
-        font-weight: 800;
+        font-weight: 900;
         margin: 0 0 8px;
-        color: #18283e;
+        color: #ffbe35;
         border: none;
         background: none;
         box-shadow: none;
         padding: 0;
         text-align: left;
+        text-shadow: 0 0 5px #fff, 0 0 15px #ffbe35, 0 0 35px #ff8f00;
     }
 
     .staff-header p {
         margin: 0;
-        color: #64748b;
+        color: #c4aab4;
     }
 
 .staff-eyebrow {
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.14em;
-    color: #64748b;
+    color: #ff174f;
     margin-bottom: 6px !important;
+    text-shadow: 0 0 10px rgba(255, 23, 79, .7);
 }
 
 .staff-header-label {
     font-size: 0.7rem;
     letter-spacing: 0.1em;
     font-weight: 700;
-    color: #64748b;
+    color: #be4cff;
 }
 
-/* 注文数の集計 */
 .staff-summary {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -55,25 +53,26 @@
 }
 
 .staff-summary-box {
-    background: #fff;
-    border: 1px solid #e2e8f0;
+    background: linear-gradient( 145deg, rgba(35,18,26,.95), rgba(10,10,11,.98) );
+    border: 1px solid #70223d;
     border-radius: 12px;
     padding: 16px 20px;
+    box-shadow: 0 0 12px rgba(166,0,40,.15), 0 6px 20px rgba(0,0,0,.6);
 }
 
     .staff-summary-box span {
         display: block;
-        color: #64748b;
+        color: #c4aab4;
         font-size: 0.85rem;
     }
 
     .staff-summary-box strong {
         display: block;
-        color: #18283e;
+        color: #ffbe35;
         font-size: 1.8rem;
+        text-shadow: 0 0 12px rgba(255,190,53,.6);
     }
 
-/* 注文カード一覧 */
 .staff-order-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -81,24 +80,28 @@
     gap: 18px;
 }
 
-/* 注文1件のカード */
 .staff-order-card {
-    background: #fff;
-    border: 1px solid #e2e8f0;
+    background: linear-gradient( 145deg, rgba(35,18,26,.95), rgba(10,10,11,.98) );
+    border: 1px solid #70223d;
     border-radius: 14px;
     padding: 20px;
-    box-shadow: 0 4px 15px rgba(20, 30, 50, 0.06);
+    box-shadow: 0 0 12px rgba(166,0,40,.15), 0 8px 25px rgba(0,0,0,.75);
     min-width: 0;
+    transition: .3s ease;
 }
 
-/* カード上部 */
+    .staff-order-card:hover {
+        border-color: #ff174f;
+        box-shadow: 0 0 15px rgba(255,23,79,.35), 0 0 30px rgba(255,23,79,.15), 0 10px 30px rgba(0,0,0,.85);
+    }
+
 .staff-order-top {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     gap: 12px;
     padding-bottom: 18px;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid #3c1a28;
 }
 
 .staff-order-identity {
@@ -109,25 +112,27 @@
 }
 
 .staff-table-number {
-    background: #18283e;
+    background: linear-gradient( 135deg, #8d001f, #1c0008 );
     color: #fff;
+    border: 1px solid #ff174f;
     border-radius: 8px;
     padding: 12px 15px;
     font-weight: 800;
     white-space: nowrap;
+    box-shadow: 0 0 10px rgba(255,23,79,.35);
 }
 
 .staff-order-id {
     font-weight: 700;
+    color: #f4edf0;
 }
 
 .staff-order-time {
     display: block;
     font-size: 0.8rem;
-    color: #64748b;
+    color: #c4aab4;
 }
 
-/* 注文状態 */
 .staff-status {
     display: inline-block;
     border-radius: 20px;
@@ -138,21 +143,23 @@
 }
 
 .staff-status-new {
-    background: #dbeafe;
-    color: #1d4ed8;
+    background: rgba(255,23,79,.18);
+    color: #ff4c74;
+    border: 1px solid rgba(255,23,79,.4);
 }
 
 .staff-status-cooking {
-    background: #fef3c7;
-    color: #92400e;
+    background: rgba(255,190,53,.15);
+    color: #ffbe35;
+    border: 1px solid rgba(255,190,53,.4);
 }
 
 .staff-status-served {
-    background: #dcfce7;
-    color: #166534;
+    background: rgba(45,212,191,.15);
+    color: #5eead4;
+    border: 1px solid rgba(45,212,191,.4);
 }
 
-/* 注文した商品 */
 .staff-order-items {
     display: flex;
     flex-direction: column;
@@ -165,82 +172,81 @@
     display: flex;
     justify-content: space-between;
     gap: 12px;
-    color: #334155;
+    color: #e6dae0;
 }
 
     .staff-order-item strong {
         white-space: nowrap;
     }
 
-/* カード下部 */
 .staff-order-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 12px;
     padding-top: 18px;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid #3c1a28;
 }
 
 .staff-total span {
     display: block;
-    color: #64748b;
+    color: #c4aab4;
     font-size: 0.8rem;
 }
 
 .staff-total strong {
-    color: #18283e;
+    color: #ffbe35;
     font-size: 1.4rem;
+    text-shadow: 0 0 10px rgba(255,190,53,.5);
 }
 
-/* 状態変更ボタン */
 .staff-action-button {
-    background: #2563eb;
+    background: linear-gradient( 135deg, #8d001f, #1c0008 );
     color: #fff;
-    border: none;
+    border: 1px solid #ff174f;
     border-radius: 8px;
     padding: 11px 16px;
     font-weight: 700;
     white-space: nowrap;
+    transition: .25s ease;
+    box-shadow: 0 0 10px rgba(255,23,79,.3);
 }
 
     .staff-action-button:hover {
-        background: #1d4ed8;
+        background: linear-gradient( 135deg, #ff174f, #70001d );
         color: #fff;
+        box-shadow: 0 0 10px #ff174f, 0 0 25px rgba(255,23,79,.6);
     }
 
     .staff-action-button:focus-visible {
-        outline: 3px solid #93c5fd;
+        outline: 3px solid rgba(255,23,79,.6);
         outline-offset: 3px;
     }
 
-/* 提供済み */
 .staff-completed {
-    color: #15803d;
+    color: #5eead4;
     font-weight: 700;
 }
 
-/* 注文なし */
 .staff-empty {
-    background: #fff;
+    background: linear-gradient( 145deg, rgba(35,18,26,.95), rgba(10,10,11,.98) );
     text-align: center;
     padding: 60px 20px;
-    border: 1px dashed #cbd5e1;
+    border: 1px dashed #70223d;
     border-radius: 14px;
 }
 
     .staff-empty h2 {
         font-size: 1.3rem;
+        color: #ffbe35;
     }
 
-/* タブレット以下は1列表示 */
 @media (max-width: 900px) {
     .staff-order-grid {
         grid-template-columns: 1fr;
     }
 }
 
-/* スマホ対応 */
 @media (max-width: 600px) {
     .staff-page {
         padding-top: 10px;

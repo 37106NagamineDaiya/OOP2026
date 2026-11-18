@@ -24,9 +24,7 @@ builder.Services.AddSession(options => // Session 機能を登録
 builder.Services.AddHttpContextAccessor(); // Controller 以外のクラスからHttpContext を取得できるようにする
 builder.Services.AddScoped<CartService>(); // CartService をDI へ登録しControllerで受け取れるようにする
 
-
-builder.Services.AddScoped<IOrderService, OrderService>();
-
+builder.Services.AddScoped<IOrderService, OrderService>();  //サービス層を作成したことによる追加
 builder.Services.AddSignalR();
 
 var app = builder.Build();
@@ -62,4 +60,5 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapHub<StaffOrdersHub>("/staffOrdersHub");
+
 app.Run();

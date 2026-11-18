@@ -82,10 +82,10 @@
                         @* 現在の注文状態 *@
                         <span class="staff-status
                                             @(order.Status == OrderStatus.Served
-                                                                                            ? "staff-status-served"
-                                                                                            : order.Status == OrderStatus.Cooking
-                                                                                                ? "staff-status-cooking"
-                                                                                                : "staff-status-new")">
+                                                                ? "staff-status-served"
+                                                                : order.Status == OrderStatus.Cooking
+                                                                    ? "staff-status-cooking"
+                                                                    : "staff-status-new")">
                     @order.Status.ToJapanese()
                 </span>
             </div>
@@ -144,29 +144,26 @@
             }
 
         </div>
-
-
     }
-
 </div>
-@section Scripts {
-    @* LibMan で追加したSignalRのJavaScript *@ 
-    <script src="~/js/microsoft/signalr/dist/browser/signalr.min.js"></script>
-    <script>
 
-        // Hubとの接続を作る
+@section Scripts {
+    @* LibMan で追加したSignalR のJavaScript *@
+    <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+    <script>
+        // Hub との接続を作る
         const staffConnection = new signalR.HubConnectionBuilder()
-        .withUrl("/staffOrdersHub")
-        .withAutomaticReconnect()
-        .build();
+                                                .withUrl("/staffOrdersHub")
+                                                .withAutomaticReconnect()
+                                                .build();
         // 通知を受けたら最新の注文一覧を読み直す
         staffConnection.on("OrdersChanged", () => {
-        window.location.reload();
+            window.location.reload();
         });
         // 再接続後も表示内容を更新する
         staffConnection.onreconnected(() => window.location.reload());
         staffConnection.start().catch(error => {
-        console.error("店舗 SignalR 接続エラー", error);
+            console.error("店舗SignalR 接続エラー", error);
         });
     </script>
 }

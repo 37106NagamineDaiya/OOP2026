@@ -4,7 +4,6 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>36b6d8d8-4d20-4975-b9ee-dfda6c396016</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,12 +16,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\images\" />
-    <Folder Include="wwwroot\images\products\" />
-    <Folder Include="wwwroot\lib\microsoft\" />
   </ItemGroup>
 
 </Project>

@@ -9,15 +9,14 @@ using System.Numerics;
 namespace SelfOrderSystem.Controllers;
 
 public class OrdersController : Controller {
-    private readonly AppDbContext _db; // 商品と注文のDB 操作
-    private readonly CartService _cart; // Session 内のカート操作
-    private readonly IOrderService _orderService; //注文の検証と保存を担当するService
+    private readonly AppDbContext _db;              // 商品と注文のDB 操作
+    private readonly CartService _cart;             // Session 内のカート操作
+    private readonly IOrderService _orderService;   //注文の検証と保存を担当するService    
 
-    public OrdersController(AppDbContext db, CartService cart,IOrderService orderService) {
+    public OrdersController(AppDbContext db, CartService cart, IOrderService orderService) {
         _db = db;
         _cart = cart;
         _orderService = orderService;
-
     }
 
     [HttpGet]
@@ -29,30 +28,36 @@ public class OrdersController : Controller {
         return View(new CheckoutViewModel { Items = items });
     }
 
-    [HttpPost]                                 // POSTで注文を受け取る 
-    [ValidateAntiForgeryToken]                 // 不正なフォーム送信を検証 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Place(CheckoutViewModel model) {
-        var cartItems = _cart.GetItems();      // Session内のカートを取得 
-        if (!ModelState.IsValid)               // テーブル番号などが不正 
-        {
-            model.Items = cartItems;          // 画面再表示のため戻す 
+        var cartItems = _cart.GetItems(); // Session を再取得
+
+
+        if (!ModelState.IsValid) {
+            model.Items = cartItems; // 再表示用の一覧を戻す
             return View("Checkout", model);
         }
 
-        var result = await _orderService.PlaceAsync(
-            cartItems, model.TableNumber);     // 注文処理をServiceへ依頼 
+        // 注文処理を Service へ依頼
+        var result = await _orderService.PlaceAsync(cartItems, model.TableNumber);
 
-        if (!result.IsSuccess)                 // 保存できない場合 
-        {
-            foreach (var error in result.Errors)
-                ModelState.AddModelError("", error); // エラーを画面へ 
+        //エラーかチェック
+        if (!result.IsSuccess) {
+            foreach (var error in result.Errors) {
+                ModelState.AddModelError("", error);    //エラーを画面表示する
+            }
             model.Items = cartItems;
             return View("Checkout", model);
         }
-
-        _cart.Clear();                         // 保存成功後だけカートを消す 
-        return RedirectToAction(nameof(Complete),
-            new { id = result.PublicId });     // 完了画面へ移動 
+        //注文成功時のPublicIDをSessionに保存
+        HttpContext.Session.SetString(
+                                "LastOrderPublicId",
+                                result.PublicId!.Value.ToString());
+        
+        _cart.Clear(); // 保存成功後にカートを空にする
+        
+        return RedirectToAction(nameof(Complete), new { id = result.PublicId });
     }
 
     [HttpGet]
@@ -71,5 +76,19 @@ public class OrdersController : Controller {
         .ThenInclude(i => i.Product)
         .SingleOrDefaultAsync(o => o.PublicId == publicId);
     }
+
+    //同じブラウザで最後に確定した注文を開く
+    public IActionResult MyOrder() {
+        var publicId = HttpContext.Session.GetString("LastOrderPublicId");
+
+        // ID がなければメニューへ移動する
+        if (!Guid.TryParse(publicId, out var id)) {
+            return RedirectToAction("Index", "Menu");
+        }
+        // 既存のStatus 画面へ移動する
+        return RedirectToAction(nameof(Status), new { id });
+    }
+
+
 
 }

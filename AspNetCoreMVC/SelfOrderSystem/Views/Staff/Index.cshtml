@@ -57,6 +57,11 @@
                 var total = order.Items.Sum(
                 i => i.UnitPrice * i.Quantity);
 
+                // 注文日時を日本時間へ変換
+                var japanTime = TimeZoneInfo.ConvertTime(
+                order.OrderedAtUtc,
+                TimeZoneInfo.FindSystemTimeZoneById("Tokyo Standard Time"));
+
                 <article class="staff-order-card">
 
                     @* 卓番・注文ID・注文時刻 *@
@@ -73,8 +78,7 @@
                                 </div>
 
                                 <time class="staff-order-time">
-                                    @order.OrderedAtUtc.ToLocalTime()
-                                    .ToString("yyyy/MM/dd HH:mm")
+                                    @japanTime.ToString("yyyy/MM/dd HH:mm")
                                 </time>
                             </div>
                         </div>
